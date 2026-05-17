@@ -16,8 +16,20 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from apps.accounts.dashboard_view import DashboardView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('apps.accounts.urls')), 
+
+    # Auth
+    path('api/', include('apps.accounts.urls')),
+
+    # Dashboard (live stats)
+    path('api/dashboard/', DashboardView.as_view(), name='dashboard'),
+
+    # Main app endpoints
+    path('api/clients/', include('apps.clients.urls')),
+    path('api/trainers/', include('apps.trainers.urls')),
+    path('api/activities/', include('apps.activities.urls')),
+    path('api/expenses/', include('apps.expenses.urls')),
 ]

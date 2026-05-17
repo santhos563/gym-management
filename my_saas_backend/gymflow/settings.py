@@ -25,15 +25,19 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
-    # Third party apps
+ 
+    # Third party
     'rest_framework',
     'rest_framework_simplejwt',
     'rest_framework_simplejwt.token_blacklist',
     'corsheaders',
-    
-    # Local apps - registered as 'apps.accounts' but Django knows it as 'accounts'
+ 
+    # Your apps — ALL 5 must be listed here
     'apps.accounts',
+    'apps.clients',
+    'apps.trainers',
+    'apps.activities',
+    'apps.expenses',
 ]
 
 MIDDLEWARE = [
@@ -77,14 +81,26 @@ WSGI_APPLICATION = 'gymflow.wsgi.application'
 # }
 
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'gymflow_db',           # Database name
+#         'USER': 'gymflow_user',          # Database user
+#         'PASSWORD': 'GymFlow@12345',     # Database password
+#         'HOST': 'localhost',              # Database host
+#         'PORT': '5432',                   # Database port
+#         'CONN_MAX_AGE': 60,
+#     }
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'gymflow_db',           # Database name
-        'USER': 'gymflow_user',          # Database user
-        'PASSWORD': 'GymFlow@12345',     # Database password
-        'HOST': 'localhost',              # Database host
-        'PORT': '5432',                   # Database port
+        'NAME': 'gymflow_db',
+        'USER': 'gymflow_user',
+        'PASSWORD': 'GymFlow@12345',   # ← put it back directly for now
+        'HOST': 'localhost',
+        'PORT': '5432',
         'CONN_MAX_AGE': 60,
     }
 }
